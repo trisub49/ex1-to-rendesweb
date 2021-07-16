@@ -12,15 +12,21 @@
     
     echo 'Összesen '.countPrimes(1000000).'db találat.';
 
+
     function countPrimes($max) {
       $counter = 0;
       $primes = array();
       $maxPrime = 0;
       for($i = 1; $i < $max; $i ++) {
         if(gmp_nextprime($i) <= $max) {
-          $i = gmp_nextprime($i);
-          array_push($primes, $i);
-          $maxPrime = $i;
+          if(gmp_nextprime($i - 1) == $i) {
+            array_push($primes, $i);
+          } else {
+            $i = gmp_nextprime($i);
+            array_push($primes, $i);
+            $maxPrime = $i;
+          }
+          //echo $i.' ';
         } else $i = $max;
       }
       for($a = 0; $a < count($primes); $a ++) {
