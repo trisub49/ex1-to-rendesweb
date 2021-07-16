@@ -12,7 +12,6 @@
     
     echo 'Összesen '.countPrimes(1000000).'db találat.';
 
-
     function countPrimes($max) {
       $counter = 0;
       $primes = array();
@@ -24,8 +23,8 @@
           } else {
             $i = gmp_nextprime($i);
             array_push($primes, $i);
-            $maxPrime = $i;
           }
+          $maxPrime = $i;
           //echo $i.' ';
         } else $i = $max;
       }
@@ -45,6 +44,6 @@
       }
       return $counter;
     }
-    ?>
+  ?>
 </body>
 </html>
